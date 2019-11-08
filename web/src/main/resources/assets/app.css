@@ -1,0 +1,97 @@
+.uk-card-small.uk-card-body {
+    padding: 5px 8px;
+    font-size: 13px;
+}
+
+.uk-border-remove {
+    border: 0 none;
+}
+
+textarea {
+    background: none !important;
+    resize: none;
+}
+
+@keyframes dot-anim {
+    100% {
+        transform: translate(0, 0);
+    }
+    50% {
+        transform: translate(0, -6px);
+    }
+    0% {
+        transform: translate(0, 0);
+    }
+}
+
+.etc i {
+    width: 6px;
+    height: 6px;
+    background: #222;
+    border-radius: 100%;
+    display: inline-block;
+    animation: dot-anim 1s infinite linear;
+    transform: translate(0, 0);
+}
+
+.etc {
+    display: block;
+    position: relative;
+}
+
+.etc i + i {
+    margin-left: 3px;
+}
+
+.etc i:nth-child(1) {
+    animation-delay: 0.5s;
+}
+
+.etc i:nth-child(2) {
+    animation-delay: 0.4s;
+}
+
+.etc i:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.uk-card {
+    position: relative;
+    z-index: 1;
+}
+
+.guest .uk-card:after, .me .uk-card:after {
+    width: 10px;
+    height: 45px;
+    position: absolute;
+    bottom: 0;
+}
+
+.guest .uk-card:after {
+    background: #fff;
+    left: -4px;
+    clip-path: polygon(100% 70%, 0% 100%, 100% 100%);
+}
+
+.me .uk-card:after {
+    background: #1e87f0;
+    right: -4px;
+    clip-path: polygon(0 70%, 0% 100%, 100% 100%);
+}
+
+.pointer {
+    cursor: pointer !important;
+}
+
+.unread {
+    border: #ee395b solid 2px;
+}
+
+.selected-user {
+    border: #1e87f0 solid 2px;
+}
+
+#messages {
+    height: 400px;
+    overflow-y: auto;
+}

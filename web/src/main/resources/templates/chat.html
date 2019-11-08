@@ -1,0 +1,100 @@
+<html
+        lang="en"
+        layout:decorate="~{layout/base.html}"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+    <title>Chat</title>
+</head>
+<div layout:fragment="content">
+    <span id="my-email" style="display: none" th:text="${me.email}"></span>
+    <span id="my-avatar" style="display: none" th:text="${me.avatarUrl}"></span>
+    <span id="my-first-name" style="display: none" th:text="${me.firstName}"></span>
+    <span id="my-last-name" style="display: none" th:text="${me.lastName}"></span>
+    <span id="receiver" style="display: none"></span>
+    <span id="user-offline-alert" style="display: none" th:text="#{error.user_offline}"></span>
+
+    <div class="uk-section">
+        <div class="uk-container uk-width-xlarge">
+            <form action="/logout" method="post">
+                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+                <button
+                        id="logout"
+                        class="uk-button uk-button-default uk-position-top-right uk-margin-small-top uk-margin-small-right"
+                        uk-toggle="target: .button-label"
+                        th:text="#{chat.logout}"
+                >
+                </button>
+            </form>
+
+            <div class="uk-card uk-card-default uk-border-rounded uk-margin-large-top">
+
+                <div class="uk-card-header uk-padding-small">
+                    <div class="uk-grid-small uk-flex-middle" uk-grid>
+                        <div id="avatars" class="uk-width-auto">
+                            <img
+                                    id="avatar-template"
+                                    class="uk-border-circle uk-margin-small-left pointer"
+                                    width="44"
+                                    height="44"
+                                    style="display: none;"
+                            >
+                            <img
+                                    th:each="user, stat : ${users}"
+                                    th:class="(${stat.first} ? 'selected-user' : '') + ' avatar uk-border-circle uk-margin-small-left pointer'"
+                                    width="44"
+                                    height="44"
+                                    th:src="${user.avatarUrl}"
+                                    th:title="${user.firstName} + ' ' + ${user.lastName} + ' [' + ${user.email} + ']'"
+                                    th:data-first-name="${user.firstName}"
+                                    th:data-last-name="${user.lastName}"
+                                    th:data-email="${user.email}"
+                            >
+                        </div>
+                    </div>
+                </div>
+
+                <div id="messages" class="uk-card-body uk-padding-small">
+
+                    <div id="message-template" class="uk-grid-small uk-flex-bottom uk-flex-left" uk-grid
+                         style="display: none;">
+                        <div class="uk-width-auto">
+                            <img class="message-avatar uk-border-circle" width="32" height="32">
+                        </div>
+                        <div class="message-content-container uk-width-auto">
+                            <div class="message-user"></div>
+                            <div class="message-content uk-card uk-card-body uk-card-small uk-card-default uk-border-rounded">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="uk-card-footer uk-padding-remove">
+                    <div class="uk-grid-small uk-flex-middle" uk-grid>
+                        <div class="uk-width-expand uk-margin-medium-left">
+                            <div class="uk-padding-small uk-padding-remove-horizontal">
+                                <textarea
+                                        id="input"
+                                        class="uk-textarea uk-padding-remove uk-border-remove"
+                                        rows="1"
+                                        maxlength="255"
+                                        th:placeholder="#{chat.input.placeholder}"
+                                ></textarea>
+                            </div>
+                        </div>
+                        <div class="uk-width-auto">
+                            <ul class="uk-iconnav uk-margin-small-right">
+                                <li>
+                                    <a id="send" uk-icon="icon: play"></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</html>

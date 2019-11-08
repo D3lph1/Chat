@@ -1,0 +1,103 @@
+<html
+        lang="en"
+        layout:decorate="~{layout/base.html}"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+    <title th:text="#{auth.signup.title}"></title>
+</head>
+<div layout:fragment="content">
+    <div class="uk-section uk-section-muted uk-flex uk-flex-middle uk-animation-fade" uk-height-viewport>
+        <div class="uk-width-1-1">
+            <div class="uk-container">
+                <div class="uk-grid-margin uk-grid uk-grid-stack" uk-grid>
+                    <div class="uk-width-1-1@m">
+                        <div class="uk-margin uk-width-large uk-margin-auto uk-card uk-card-default uk-card-body uk-box-shadow-large">
+                            <h3 class="uk-card-title uk-text-center" th:text="#{auth.signup.header}"></h3>
+                            <div id="alert-container" class="uk-margin" style="display: none">
+                                <div class="uk-alert-danger" uk-alert>
+                                    <p></p>
+                                </div>
+                            </div>
+                            <div class="uk-margin">
+                                <div class="uk-inline uk-width-1-1">
+                                    <span class="uk-form-icon" uk-icon="icon: user"></span>
+                                    <input
+                                            id="signup-first-name"
+                                            class="uk-input uk-form-large"
+                                            type="text"
+                                            value="Ivan"
+                                            th:placeholder="#{auth.signup.first_name_placeholder}"
+                                    >
+                                </div>
+                            </div>
+                            <div class="uk-margin">
+                                <div class="uk-inline uk-width-1-1">
+                                    <span class="uk-form-icon" uk-icon="icon: user"></span>
+                                    <input
+                                            id="signup-last-name"
+                                            class="uk-input uk-form-large"
+                                            type="text"
+                                            value="Ivanov"
+                                            th:placeholder="#{auth.signup.last_name_placeholder}"
+                                    >
+                                </div>
+                            </div>
+                            <div class="uk-margin">
+                                <div class="uk-inline uk-width-1-1">
+                                    <span class="uk-form-icon" uk-icon="icon: mail"></span>
+                                    <input
+                                            id="signup-email"
+                                            class="uk-input uk-form-large"
+                                            type="text"
+                                            value="admin@admin.com"
+                                            th:placeholder="#{auth.signup.email_placeholder}"
+                                    >
+                                </div>
+                            </div>
+                            <div class="uk-margin">
+                                <div class="uk-inline uk-width-1-1">
+                                    <span class="uk-form-icon" uk-icon="icon: lock"></span>
+                                    <input
+                                            id="signup-password"
+                                            class="uk-input uk-form-large"
+                                            type="password"
+                                            value="123456"
+                                            th:placeholder="#{auth.signup.password_placeholder}"
+                                    >
+                                </div>
+                            </div>
+                            <div class="uk-margin">
+                                <div class="uk-inline uk-width-1-1">
+                                    <span class="uk-form-icon" uk-icon="icon: lock"></span>
+                                    <input
+                                            id="signup-password-confirmation"
+                                            class="uk-input uk-form-large"
+                                            type="password"
+                                            value="123456"
+                                            th:placeholder="#{auth.signup.password_confirmation_placeholder}"
+                                    >
+                                </div>
+                            </div>
+                            <div class="uk-margin">
+                                <button
+                                        id="signup-btn"
+                                        class="uk-button uk-button-primary uk-button-large uk-width-1-1"
+                                        th:text="#{auth.signup.signup_button}"
+                                >
+                                </button>
+                            </div>
+                            <div class="uk-text-small uk-text-center">
+                                <span th:text="#{auth.signup.already_registered}"></span>
+                                <a th:href="@{/login}" th:text="#{auth.signup.login}"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</html>
